@@ -57,11 +57,11 @@
       <div class="mt-10 bg-gray-100 p-6 rounded-lg shadow">
         <h3 class="text-xl font-bold mb-4">Pago simulado</h3>
         <form id="form-pago" class="space-y-4">
-          <input type="text" placeholder="Correo electrónico" required class="w-full px-4 py-2 border rounded-lg">
-          <input type="text" placeholder="Nombre en la tarjeta" required class="w-full px-4 py-2 border rounded-lg">
-          <input type="text" placeholder="Número de tarjeta (simulado)" required class="w-full px-4 py-2 border rounded-lg">
-          <input type="text" placeholder="MM/AA" required class="w-full px-4 py-2 border rounded-lg">
-          <input type="text" placeholder="CVV" required class="w-full px-4 py-2 border rounded-lg">
+          <input type="email" id="email" placeholder="Correo electrónico" required class="w-full px-4 py-2 border rounded-lg">
+          <input type="text" id="nombre-tarjeta" placeholder="Nombre en la tarjeta" required class="w-full px-4 py-2 border rounded-lg">
+          <input type="text" id="numero-tarjeta" placeholder="Número de tarjeta (10 dígitos)" maxlength="10" required class="w-full px-4 py-2 border rounded-lg">
+          <input type="text" id="exp" placeholder="MM/AA" maxlength="5" required class="w-full px-4 py-2 border rounded-lg">
+          <input type="text" id="cvv" placeholder="CVV (3 dígitos)" maxlength="3" required class="w-full px-4 py-2 border rounded-lg">
           <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">
             Pagar ahora
           </button>
@@ -75,11 +75,9 @@
   <footer class="bg-emerald-600 text-white text-center py-6 mt-12">
     <p>&copy; 2025 EcoHome — Todos los derechos reservados</p>
     <nav class="space-x-6 flex items-center">
-        <a href="#" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="contacto"></i> Contacto</a>
+        <a href="#" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="mail"></i> Contacto</a>
       </nav>
   </footer>
 
   <script src="app.js"></script>
-  <script>feather.replace();</script>
-</body>
-</html>
+  <script>fe
