@@ -6,9 +6,9 @@
   <title>EcoHome — Hogares Inteligentes</title>
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Heroicons -->
+  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
-  <script defer src="app.js"></script>
+  <script src="app.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
@@ -26,57 +26,97 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-emerald-50 text-center py-20 px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-emerald-700">
-      Haz tu hogar más inteligente en minutos
-    </h2>
-    <p class="mt-4 text-lg text-gray-600">
-      Explora nuestros dispositivos de domótica para ahorrar energía y vivir mejor.
+  <!-- Bienvenida -->
+  <section class="bg-emerald-50 text-center py-16 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-emerald-700">✨ Bienvenido a EcoHome ✨</h2>
+    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+      Transformamos tu hogar en un espacio <span class="text-emerald-600 font-semibold">inteligente, seguro y sostenible</span>.  
+      Encuentra dispositivos de domótica que se adaptan a tu estilo de vida y cuidan el planeta.
     </p>
-    <button class="mt-6 px-6 py-3 bg-emerald-600 text-white rounded-full shadow-lg hover:bg-emerald-700 transition">
-      Explorar productos
-    </button>
   </section>
 
-  <!-- Productos -->
-  <section class="max-w-6xl mx-auto py-12 px-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-
-    <!-- Producto 1 -->
-    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
-      <img src="img/bombillo.jpg" alt="Bombillo inteligente" class="mx-auto h-40 object-contain mb-4">
-      <h3 class="text-xl font-semibold text-emerald-700">Bombillo inteligente</h3>
-      <p class="mt-2 text-gray-600">Controla la luz desde tu celular.</p>
-      <button onclick="agregar()" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
-        <i data-feather="plus-circle" class="inline"></i> Agregar a mi hogar
-      </button>
+  <!-- Productos Destacados -->
+  <section class="max-w-7xl mx-auto py-12 px-6">
+    <h3 class="text-2xl font-bold text-gray-800 text-center mb-8">🔥 Productos Destacados</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Producto 1 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+        <img src="img/bombillo1.jpg" alt="Bombillo inteligente" class="h-40 mx-auto">
+        <h4 class="mt-4 font-semibold text-lg text-emerald-700">Bombillo Inteligente</h4>
+        <p class="text-gray-600">Controla la luz desde tu celular.</p>
+        <span class="block mt-2 font-bold text-emerald-700">$59.900</span>
+        <button onclick="agregar('Bombillo Inteligente', 59900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+          <i data-feather="shopping-cart"></i> Agregar al carrito
+        </button>
+      </div>
+      <!-- Producto 2 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+        <img src="img/camara1.jpg" alt="Cámara de seguridad" class="h-40 mx-auto">
+        <h4 class="mt-4 font-semibold text-lg text-emerald-700">Cámara de Seguridad</h4>
+        <p class="text-gray-600">Protección con visión en tiempo real.</p>
+        <span class="block mt-2 font-bold text-emerald-700">$199.900</span>
+        <button onclick="agregar('Cámara de Seguridad', 199900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2>
+          <i data-feather="shopping-cart"></i> Agregar al carrito
+        </button>
+      </div>
+      <!-- Producto 3 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+        <img src="img/termostato1.jpg" alt="Termostato inteligente" class="h-40 mx-auto">
+        <h4 class="mt-4 font-semibold text-lg text-emerald-700">Termostato Inteligente</h4>
+        <p class="text-gray-600">Ahorra energía con control de temperatura.</p>
+        <span class="block mt-2 font-bold text-emerald-700">$249.900</span>
+        <button onclick="agregar('Termostato Inteligente', 249900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+          <i data-feather="shopping-cart"></i> Agregar al carrito
+        </button>
+      </div>
     </div>
-
-    <!-- Producto 2 -->
-    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
-      <img src="img/camara.jpg" alt="Cámara de seguridad" class="mx-auto h-40 object-contain mb-4">
-      <h3 class="text-xl font-semibold text-emerald-700">Cámara de seguridad</h3>
-      <p class="mt-2 text-gray-600">Protege tu casa con visión en tiempo real.</p>
-      <button onclick="agregar()" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
-        <i data-feather="plus-circle" class="inline"></i> Agregar a mi hogar
-      </button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
-      <img src="img/termostato.jpg" alt="Termostato inteligente" class="mx-auto h-40 object-contain mb-4">
-      <h3 class="text-xl font-semibold text-emerald-700">Termostato inteligente</h3>
-      <p class="mt-2 text-gray-600">Ahorra energía controlando la temperatura de tu hogar.</p>
-      <button onclick="agregar()" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
-        <i data-feather="plus-circle" class="inline"></i> Agregar a mi hogar
-      </button>
-    </div>
-
   </section>
 
-  <script>
-    feather.replace(); // Activa los íconos Feather
-  </script>
+  <!-- Ofertas -->
+  <section class="bg-emerald-100 py-12 px-6">
+    <h3 class="text-2xl font-bold text-gray-800 text-center mb-8">💰 Ofertas Especiales</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <!-- Oferta 1 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center relative">
+        <span class="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">-20%</span>
+        <img src="img/altavoz1.jpg" alt="Altavoz inteligente" class="h-40 mx-auto">
+        <h4 class="mt-4 font-semibold text-lg text-emerald-700">Altavoz Inteligente</h4>
+        <p class="text-gray-600">Asistente de voz para controlar tu hogar.</p>
+        <span class="block mt-2 font-bold text-emerald-700">$299.900 <span class="line-through text-gray-400">$379.900</span></span>
+        <button onclick="agregar('Altavoz Inteligente', 299900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+          <i data-feather="shopping-cart"></i> Agregar al carrito
+        </button>
+      </div>
+      <!-- Oferta 2 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center relative">
+        <span class="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">-15%</span>
+        <img src="img/sensor1.jpg" alt="Sensor de movimiento" class="h-40 mx-auto">
+        <h4 class="mt-4 font-semibold text-lg text-emerald-700">Sensor de Movimiento</h4>
+        <p class="text-gray-600">Automatiza luces y alarmas en casa.</p>
+        <span class="block mt-2 font-bold text-emerald-700">$84.900 <span class="line-through text-gray-400">$99.900</span></span>
+        <button onclick="agregar('Sensor de Movimiento', 84900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+          <i data-feather="shopping-cart"></i> Agregar al carrito
+        </button>
+      </div>
+    </div>
+  </section>
 
+  <!-- CTA Final -->
+  <section class="text-center py-16 px-6">
+    <h3 class="text-3xl font-bold text-emerald-700">Explora todo nuestro catálogo</h3>
+    <p class="mt-2 text-gray-600">Más de 50 dispositivos inteligentes para tu hogar</p>
+    <a href="catalogo.html">
+      <button class="mt-6 px-8 py-3 bg-emerald-600 text-white rounded-full shadow-lg hover:bg-emerald-700 transition">
+        Ver todos los productos
+      </button>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-emerald-600 text-white text-center py-6 mt-12">
+    <p>&copy; 2025 EcoHome — Todos los derechos reservados</p>
+  </footer>
+
+  <script>feather.replace();</script>
 </body>
 </html>
