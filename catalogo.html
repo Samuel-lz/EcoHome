@@ -64,9 +64,9 @@
         <div class="swiper-button-next"></div>
       </div>
       <h3 class="text-lg font-semibold text-emerald-700 mt-4">Bombillo inteligente</h3>
-      <p class="mt-2 text-gray-600">Controla la luz desde tu celular.</p>
+      <p class="mt-2 text-gray-600">Controla la iluminación de tu hogar desde tu celular.</p>
       <span class="block mt-2 text-emerald-700 font-bold">$59.900</span>
-      <button onclick="agregar('Bombillo inteligente', 59900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+      <button onclick="agregar('Bombillo inteligente', 59900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
         <i data-feather="shopping-cart"></i> Agregar al carrito
       </button>
     </div>
@@ -86,7 +86,7 @@
       <h3 class="text-lg font-semibold text-emerald-700 mt-4">Cámara de seguridad</h3>
       <p class="mt-2 text-gray-600">Protege tu casa con visión en tiempo real.</p>
       <span class="block mt-2 text-emerald-700 font-bold">$199.900</span>
-      <button onclick="agregar('Cámara de seguridad', 199900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+      <button onclick="agregar('Cámara de seguridad', 199900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
         <i data-feather="shopping-cart"></i> Agregar al carrito
       </button>
     </div>
@@ -106,13 +106,14 @@
       <h3 class="text-lg font-semibold text-emerald-700 mt-4">Termostato inteligente</h3>
       <p class="mt-2 text-gray-600">Ahorra energía controlando la temperatura.</p>
       <span class="block mt-2 text-emerald-700 font-bold">$249.900</span>
-      <button onclick="agregar('Termostato inteligente', 249900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+      <button onclick="agregar('Termostato inteligente', 249900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
         <i data-feather="shopping-cart"></i> Agregar al carrito
       </button>
     </div>
 
     <!-- Producto 4 -->
     <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="asistentes">
+        <span class="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">-15%</span>
       <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="img/altavoz.jpg" alt="Altavoz" class="mx-auto h-40"></div>
@@ -125,17 +126,32 @@
       </div>
       <h3 class="text-lg font-semibold text-emerald-700 mt-4">Altavoz inteligente</h3>
       <p class="mt-2 text-gray-600">Asistente de voz para controlar tu hogar.</p>
-      <span class="block mt-2 text-emerald-700 font-bold">$299.900</span>
-      <button onclick="agregar('Altavoz inteligente', 299900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+      <span class="block mt-2 text-emerald-700 font-bold">$299.900<span class="line-through text-gray-400">$379.900</span></span>
+      <button onclick="agregar('Altavoz inteligente', 299900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
         <i data-feather="shopping-cart"></i> Agregar al carrito
       </button>
     </div>
+
+    <!-- Producto 5 -->
+    <div class="bg-white rounded-xl shadow-lg p-6 text-center relative" data-category="seguridad">
+        <span class="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">-15%</span>
+        <img src="img/sensor1.jpg" alt="Sensor de movimiento" class="h-40 mx-auto">
+        <h4 class="mt-4 font-semibold text-lg text-emerald-700">Sensor de Movimiento</h4>
+        <p class="text-gray-600">Automatiza luces y alarmas en casa.</p>
+        <span class="block mt-2 font-bold text-emerald-700">$84.900 <span class="line-through text-gray-400">$99.900</span></span>
+        <button onclick="agregar('Sensor de Movimiento', 84900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+          <i data-feather="shopping-cart"></i> Agregar al carrito
+        </button>
+      </div>
 
   </main>
 
   <!-- Footer -->
   <footer class="bg-emerald-600 text-white text-center py-6 mt-12">
     <p>&copy; 2025 EcoHome — Todos los derechos reservados</p>
+    <nav class="space-x-6 flex items-center">
+        <a href="#" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="contacto"></i> Contacto</a>
+      </nav>
   </footer>
 
   <!-- Scripts -->
