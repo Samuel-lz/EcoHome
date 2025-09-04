@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoHome — Catálogo de Productos</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-emerald-600 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold flex items-center gap-2">
+        <i data-feather="home"></i> EcoHome
+      </h1>
+      <nav class="space-x-6 flex items-center">
+        <a href="index.html" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="home"></i> Inicio</a>
+        <a href="catalogo.html" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="grid"></i> Productos</a>
+        <a href="carrito.html" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="shopping-cart"></i> Carrito</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-emerald-50 text-center py-16 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-emerald-700">Catálogo de Productos</h2>
+    <p class="mt-4 text-lg text-gray-600">Explora nuestra selección de dispositivos inteligentes para tu hogar.</p>
+  </section>
+
+  <!-- Buscador -->
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <input id="search" type="text" placeholder="🔍 Buscar producto..." 
+      class="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-emerald-500 outline-none">
+  </div>
+
+  <!-- Filtros -->
+  <div class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap gap-4 justify-center">
+    <button class="filter-btn bg-emerald-600 text-white px-4 py-2 rounded" data-category="all">Todos</button>
+    <button class="filter-btn bg-gray-200 px-4 py-2 rounded hover:bg-gray-300" data-category="iluminacion">Iluminación</button>
+    <button class="filter-btn bg-gray-200 px-4 py-2 rounded hover:bg-gray-300" data-category="seguridad">Seguridad</button>
+    <button class="filter-btn bg-gray-200 px-4 py-2 rounded hover:bg-gray-300" data-category="confort">Confort</button>
+    <button class="filter-btn bg-gray-200 px-4 py-2 rounded hover:bg-gray-300" data-category="asistentes">Asistentes</button>
+  </div>
+
+  <!-- Productos -->
+  <main id="productos" class="max-w-7xl mx-auto py-12 px-6 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+    <!-- Producto 1 -->
+    <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="iluminacion">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/bombillo.jpg" alt="Bombillo " class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/bombillo1.jpg" alt="Bombillo 1" class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/bombillo2.jpg" alt="Bombillo 2" class="mx-auto h-40"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <h3 class="text-lg font-semibold text-emerald-700 mt-4">Bombillo inteligente</h3>
+      <p class="mt-2 text-gray-600">Controla la luz desde tu celular.</p>
+      <span class="block mt-2 text-emerald-700 font-bold">$59.900</span>
+      <button onclick="agregar('Bombillo inteligente', 59900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="shopping-cart"></i> Agregar al carrito
+      </button>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="seguridad">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/camara.jpg" alt="Cámara " class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/camara1.jpg" alt="Cámara 1" class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/camara2.jpg" alt="Cámara 2" class="mx-auto h-40"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <h3 class="text-lg font-semibold text-emerald-700 mt-4">Cámara de seguridad</h3>
+      <p class="mt-2 text-gray-600">Protege tu casa con visión en tiempo real.</p>
+      <span class="block mt-2 text-emerald-700 font-bold">$199.900</span>
+      <button onclick="agregar('Cámara de seguridad', 199900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="shopping-cart"></i> Agregar al carrito
+      </button>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="confort">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+           <div class="swiper-slide"><img src="img/termostato.jpg" alt="Termostato " class="mx-auto h-40"></div>
+            <div class="swiper-slide"><img src="img/termostato1.jpg" alt="Termostato 1" class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/termostato2.jpg" alt="Termostato 2" class="mx-auto h-40"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <h3 class="text-lg font-semibold text-emerald-700 mt-4">Termostato inteligente</h3>
+      <p class="mt-2 text-gray-600">Ahorra energía controlando la temperatura.</p>
+      <span class="block mt-2 text-emerald-700 font-bold">$249.900</span>
+      <button onclick="agregar('Termostato inteligente', 249900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="shopping-cart"></i> Agregar al carrito
+      </button>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="asistentes">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/altavoz.jpg" alt="Altavoz" class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/altavoz1.jpg" alt="Altavoz 1" class="mx-auto h-40"></div>
+          <div class="swiper-slide"><img src="img/altavoz2.jpg" alt="Altavoz 2" class="mx-auto h-40"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <h3 class="text-lg font-semibold text-emerald-700 mt-4">Altavoz inteligente</h3>
+      <p class="mt-2 text-gray-600">Asistente de voz para controlar tu hogar.</p>
+      <span class="block mt-2 text-emerald-700 font-bold">$299.900</span>
+      <button onclick="agregar('Altavoz inteligente', 299900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="shopping-cart"></i> Agregar al carrito
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-emerald-600 text-white text-center py-6 mt-12">
+    <p>&copy; 2025 EcoHome — Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    feather.replace();
+    // Inicializa Swiper para cada carrusel
+    document.querySelectorAll('.swiper').forEach(c => {
+      new Swiper(c, {
+        loop: true,
+        pagination: { el: c.querySelector('.swiper-pagination'), clickable: true },
+        navigation: { nextEl: c.querySelector('.swiper-button-next'), prevEl: c.querySelector('.swiper-button-prev') },
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoHome — Hogares Inteligentes</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Heroicons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script defer src="app.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-emerald-600 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold flex items-center gap-2">
+        <i data-feather="home"></i> EcoHome
+      </h1>
+      <nav class="space-x-6 flex items-center">
+        <a href="index.html" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="home"></i> Inicio</a>
+        <a href="catalogo.html" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="grid"></i> Productos</a>
+        <a href="carrito.html" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="shopping-cart"></i> Carrito</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-emerald-50 text-center py-20 px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-emerald-700">
+      Haz tu hogar más inteligente en minutos
+    </h2>
+    <p class="mt-4 text-lg text-gray-600">
+      Explora nuestros dispositivos de domótica para ahorrar energía y vivir mejor.
+    </p>
+    <button class="mt-6 px-6 py-3 bg-emerald-600 text-white rounded-full shadow-lg hover:bg-emerald-700 transition">
+      Explorar productos
+    </button>
+  </section>
+
+  <!-- Productos -->
+  <section class="max-w-6xl mx-auto py-12 px-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+
+    <!-- Producto 1 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
+      <img src="img/bombillo.jpg" alt="Bombillo inteligente" class="mx-auto h-40 object-contain mb-4">
+      <h3 class="text-xl font-semibold text-emerald-700">Bombillo inteligente</h3>
+      <p class="mt-2 text-gray-600">Controla la luz desde tu celular.</p>
+      <button onclick="agregar()" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="plus-circle" class="inline"></i> Agregar a mi hogar
+      </button>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
+      <img src="img/camara.jpg" alt="Cámara de seguridad" class="mx-auto h-40 object-contain mb-4">
+      <h3 class="text-xl font-semibold text-emerald-700">Cámara de seguridad</h3>
+      <p class="mt-2 text-gray-600">Protege tu casa con visión en tiempo real.</p>
+      <button onclick="agregar()" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="plus-circle" class="inline"></i> Agregar a mi hogar
+      </button>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
+      <img src="img/termostato.jpg" alt="Termostato inteligente" class="mx-auto h-40 object-contain mb-4">
+      <h3 class="text-xl font-semibold text-emerald-700">Termostato inteligente</h3>
+      <p class="mt-2 text-gray-600">Ahorra energía controlando la temperatura de tu hogar.</p>
+      <button onclick="agregar()" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+        <i data-feather="plus-circle" class="inline"></i> Agregar a mi hogar
+      </button>
+    </div>
+
+  </section>
+
+  <script>
+    feather.replace(); // Activa los íconos Feather
+  </script>
+
+</body>
+</html>
