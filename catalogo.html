@@ -113,8 +113,8 @@
 
     <!-- Producto 4 -->
     <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="asistentes">
-        <span class="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">-15%</span>
       <div class="swiper">
+        <span class="absolute top-2 right-0 bg-red-500 text-white text-sm px-1 py-1 rounded">-20%</span>
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="img/altavoz.jpg" alt="Altavoz" class="mx-auto h-40"></div>
           <div class="swiper-slide"><img src="img/altavoz1.jpg" alt="Altavoz 1" class="mx-auto h-40"></div>
@@ -126,16 +126,18 @@
       </div>
       <h3 class="text-lg font-semibold text-emerald-700 mt-4">Altavoz inteligente</h3>
       <p class="mt-2 text-gray-600">Asistente de voz para controlar tu hogar.</p>
-      <span class="block mt-2 text-emerald-700 font-bold">$299.900<span class="line-through text-gray-400">$379.900</span></span>
+      <span class="block mt-2 text-emerald-700 font-bold">$299.900 <span class="line-through text-gray-400">$379.900</span></span>
       <button onclick="agregar('Altavoz inteligente', 299900)" class="mt-4 w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition flex items-center justify-center gap-2">
         <i data-feather="shopping-cart"></i> Agregar al carrito
       </button>
     </div>
 
     <!-- Producto 5 -->
-    <div class="bg-white rounded-xl shadow-lg p-6 text-center relative" data-category="seguridad">
+    <div class="card bg-white rounded-2xl shadow-lg p-6 text-center" data-category="seguridad">
+      <div class="swiper">
         <span class="absolute top-2 right-2 bg-red-500 text-white text-sm px-2 py-1 rounded">-15%</span>
         <img src="img/sensor1.jpg" alt="Sensor de movimiento" class="h-40 mx-auto">
+      </div>
         <h4 class="mt-4 font-semibold text-lg text-emerald-700">Sensor de Movimiento</h4>
         <p class="text-gray-600">Automatiza luces y alarmas en casa.</p>
         <span class="block mt-2 font-bold text-emerald-700">$84.900 <span class="line-through text-gray-400">$99.900</span></span>
@@ -149,10 +151,20 @@
   <!-- Footer -->
   <footer class="bg-emerald-600 text-white text-center py-6 mt-12">
     <p>&copy; 2025 EcoHome — Todos los derechos reservados</p>
-    <nav class="space-x-6 flex items-center">
-        <a href="#" class="flex items-center gap-1 hover:text-emerald-200"><i data-feather="contacto"></i> Contacto</a>
-      </nav>
   </footer>
+
+  <!-- Modal -->
+<div id="modalCarrito" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
+    <h3 class="text-lg font-bold text-emerald-700 mb-4">✅ Producto agregado</h3>
+    <p id="modalTexto" class="text-gray-600 mb-6"></p>
+    <div class="flex justify-around">
+      <button onclick="cerrarModal()" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Seguir comprando</button>
+      <button onclick="window.location.href='carrito.html'" class="px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700">Ir al carrito</button>
+    </div>
+  </div>
+</div>
+
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
