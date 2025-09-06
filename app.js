@@ -109,8 +109,9 @@ function mostrarMensaje(texto, color = "green") {
   const mensajePago = document.getElementById("mensaje-pago");
   mensajePago.style.color = color;
   mensajePago.innerHTML = `
-    <div class="p-4 border rounded-md bg-${color === 'green' ? 'emerald-100' : 'red-100'} text-${color}-700">
-      ${texto} <button onclick="cerrarMensaje()" class="ml-4 px-2 py-1 bg-${color === 'green' ? 'emerald-500' : 'red-500'} text-white rounded">Aceptar</button>
+    <div role="alert" class="p-4 border rounded-md bg-${color === 'green' ? 'emerald-100' : 'red-100'} text-${color}-700">
+      ${texto} 
+      <button onclick="cerrarMensaje()" class="ml-4 px-2 py-1 bg-${color === 'green' ? 'emerald-500' : 'red-500'} text-white rounded">Aceptar</button>
     </div>
   `;
 }
@@ -119,23 +120,40 @@ function cerrarMensaje() {
   document.getElementById("mensaje-pago").innerHTML = "";
 }
 
-// Validaciones
+// ----------------- VALIDACIONES -----------------
+
+// ✅ Validar email (cualquier .algo, mínimo 2 caracteres en extensión)
 function validarEmail(email) {
-  const regex = /^[^@]+@[^@]+\.(com|co|net|org|edu|es)$/i;
+  const regex = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
   return regex.test(email);
 }
 
+// ✅ Validar nombre (solo letras y espacios)
 function validarNombre(nombre) {
-  return /^[A-Za-z\s]+$/.test(nombre);
+  return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre);
 }
 
+// ✅ Validar número de tarjeta (14 a 19 dígitos)
 function validarNumeroTarjeta(numero) {
-  return /^\d{10}$/.test(numero);
+  return /^\d{14,19}$/.test(numero);
 }
 
+// ✅ Validar fecha de expiración (MM/AA y no menor a la actual)
 function validarMMYY(exp) {
   const regex = /^(0[1-9]|1[0-2])\/\d{2}$/;
-  return regex.test(exp);
+  if (!regex.test(exp)) return { valido: false, error: "❌ Formato inválido. Usa MM/AA con mes entre 01 y 12." };
+
+  const [mes, anio] = exp.split("/").map(x => parseInt(x, 10));
+
+  const fecha = new Date();
+  const anioActual = fecha.getFullYear() % 100;
+  const mesActual = fecha.getMonth() + 1;
+
+  if (anio < anioActual || (anio === anioActual && mes < mesActual)) {
+    return { valido: false, error: "❌ La tarjeta está vencida. Usa una fecha posterior a la actual." };
+  }
+
+  return { valido: true };
 }
 
 // ----------------- PAGAR -----------------
@@ -151,27 +169,52 @@ function pagarAhora() {
     return;
   }
 
-  if (!validarEmail(email)) { mostrarMensaje("❌ Correo inválido. Ejemplo: diego@samuel.com, diego@samuel.es, diego@samuel.edu", "red"); return; }
-  if (!validarNombre(nombreTarjeta)) { mostrarMensaje("❌ Solo letras en el nombre de la tarjeta.", "red"); return; }
-  if (!validarNumeroTarjeta(numeroTarjeta)) { mostrarMensaje("❌ Número de tarjeta debe tener 10 dígitos.", "red"); return; }
-  if (!validarMMYY(exp)) { mostrarMensaje("❌ Fecha inválida. Formato MM/AA, mes 01-12.", "red"); return; }
-  if (cvv.length !== 3 || isNaN(cvv)) { mostrarMensaje("❌ CVV inválido. Debe tener 3 dígitos.", "red"); return; }
+  if (!validarEmail(email)) { 
+    mostrarMensaje("❌ Correo inválido. Ejemplo válido: usuario@dominio.com", "red"); 
+    return; 
+  }
+  if (!validarNombre(nombreTarjeta)) { 
+    mostrarMensaje("❌ El nombre de la tarjeta solo debe contener letras.", "red"); 
+    return; 
+  }
+  if (!validarNumeroTarjeta(numeroTarjeta)) { 
+    mostrarMensaje("❌ El número de tarjeta debe tener entre 14 y 19 dígitos.", "red"); 
+    return; 
+  }
+  const expValidacion = validarMMYY(exp);
+  if (!expValidacion.valido) { 
+    mostrarMensaje(expValidacion.error, "red"); 
+    return; 
+  }
+  if (cvv.length !== 3 || isNaN(cvv)) { 
+    mostrarMensaje("❌ El CVV debe contener exactamente 3 dígitos numéricos.", "red"); 
+    return; 
+  }
 
+  // ✅ Aquí agregamos confirmación de compra
+  const confirmar = confirm("🛒 ¿Confirmas tu compra con los productos seleccionados?");
+  if (!confirmar) return; // si el usuario da "Cancelar" no se procesa
+
+  // Procesar compra
   pedidoID++;
   localStorage.setItem("pedidoID", pedidoID);
 
-  mostrarMensaje(`🎉 Gracias por tu compra, tu pedido número ${pedidoID} fue procesado con éxito.<br>Esperamos que disfrutes tus productos EcoHome 🏠`);
+  mostrarMensaje(
+    `🎉 Gracias por tu compra, tu pedido fue agendao con el número de seguimiento P - ${pedidoID}.<br>Recibirás un correo de confirmación en breve.`,
+    "green"
+  );
 
   carrito = [];
   guardarCarrito();
   renderCarrito();
 }
 
+
 // ----------------- ENTER PARA PASAR SOLO SI VALIDO -----------------
 document.addEventListener("DOMContentLoaded", () => {
   renderCarrito();
   const inputs = document.querySelectorAll("#form-pago input");
-  
+
   inputs.forEach((input, index) => {
     input.addEventListener("keydown", e => {
       if (e.key === "Enter") {
@@ -182,16 +225,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (input.id === "email") valido = validarEmail(val);
         if (input.id === "nombre-tarjeta") valido = validarNombre(val);
         if (input.id === "numero-tarjeta") valido = validarNumeroTarjeta(val);
-        if (input.id === "exp") valido = validarMMYY(val);
+        if (input.id === "exp") valido = validarMMYY(val).valido;
         if (input.id === "cvv") valido = (val.length === 3 && !isNaN(val));
 
         if (!valido) {
           input.focus();
-          if (input.id === "email") mostrarMensaje("❌ Correo inválido. Ejemplo: diego@samuel.com, diego@samuel.es, diego@samuel.edu", "red");
-          if (input.id === "nombre-tarjeta") mostrarMensaje("❌ Solo letras en el nombre de la tarjeta.", "red");
-          if (input.id === "numero-tarjeta") mostrarMensaje("❌ Número de tarjeta debe tener 10 dígitos.", "red");
-          if (input.id === "exp") mostrarMensaje("❌ Fecha inválida. Formato MM/AA, mes 01-12.", "red");
-          if (input.id === "cvv") mostrarMensaje("❌ CVV inválido. Debe tener 3 dígitos.", "red");
+          if (input.id === "email") mostrarMensaje("❌ Correo inválido. Ejemplo válido: usuario@dominio.com", "red");
+          if (input.id === "nombre-tarjeta") mostrarMensaje("❌ El nombre de la tarjeta solo debe contener letras.", "red");
+          if (input.id === "numero-tarjeta") mostrarMensaje("❌ El número de tarjeta debe tener entre 14 y 19 dígitos.", "red");
+          if (input.id === "exp") {
+            const expValidacion = validarMMYY(val);
+            mostrarMensaje(expValidacion.error, "red");
+          }
+          if (input.id === "cvv") mostrarMensaje("❌ El CVV debe contener exactamente 3 dígitos numéricos.", "red");
           return;
         }
 
@@ -204,10 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (input.id === "exp") {
       input.addEventListener("input", e => {
-        let val = e.target.value.replace(/\D/g,'');
-        if (val.length > 2) val = val.slice(0,2) + "/" + val.slice(2,4);
+        let val = e.target.value.replace(/\D/g, '');
+        if (val.length > 2) val = val.slice(0, 2) + "/" + val.slice(2, 4);
         e.target.value = val;
       });
     }
   });
 });
+
