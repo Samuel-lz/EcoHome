@@ -2,7 +2,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search");
   const cards = document.querySelectorAll("#productos .card");
+  const filterBtns = document.querySelectorAll(".filter-btn");
 
+  // Búsqueda por texto
   if (searchInput) {
     searchInput.addEventListener("input", e => {
       const term = e.target.value.toLowerCase();
@@ -13,9 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.querySelectorAll(".filter-btn").forEach(btn => {
+  // Filtros por categoría + resaltar botón activo
+  filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const category = btn.dataset.category;
+
+      // Filtrar productos
       cards.forEach(card => {
         if (category === "all" || card.dataset.category === category) {
           card.style.display = "block";
@@ -23,9 +28,22 @@ document.addEventListener("DOMContentLoaded", () => {
           card.style.display = "none";
         }
       });
+
+      // Resetear estilos de todos los botones
+      filterBtns.forEach(b => {
+        b.classList.remove("bg-emerald-600", "text-white", "ring-2", "ring-emerald-300");
+        b.classList.add("bg-gray-200", "text-gray-800", "hover:bg-gray-300");
+        b.setAttribute("aria-pressed", "false");
+      });
+
+      // Activar estilo en el botón clickeado
+      btn.classList.remove("bg-gray-200", "text-gray-800", "hover:bg-gray-300");
+      btn.classList.add("bg-emerald-600", "text-white", "ring-2", "ring-emerald-300");
+      btn.setAttribute("aria-pressed", "true");
     });
   });
 });
+
 
 // ----------------- CARRITO -----------------
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []; // INICIAL VACÍO
@@ -43,8 +61,13 @@ function agregar(nombre = "Producto", precio = 100000) {
     carrito.push({ nombre, precio, cantidad: 1 });
   }
   guardarCarrito();
-  alert(`✅ ${nombre} agregado al carrito`);
   renderCarrito();
+  // Mostrar modal
+  document.getElementById("modalTexto").textContent = `${nombre} se agregó a tu carrito.`;
+  document.getElementById("modalCarrito").classList.remove("hidden");
+}
+function cerrarModal() {
+  document.getElementById("modalCarrito").classList.add("hidden");
 }
 
 // Renderizar carrito
